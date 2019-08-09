@@ -35,9 +35,7 @@ COPY ./hadoop-config/* /hadoop/etc/hadoop/
 
 RUN hdfs namenode -format
 
-EXPOSE 9870 8020 8042 8088 9000 10020 19888 50010 50020 50070 50075 50090
+EXPOSE 9870 9864 9866
 
-CMD [ "sh", "/etc/init.d/ssh", "start"]
-
-ENTRYPOINT /etc/init.d/ssh start && /bin/bash
+ENTRYPOINT /etc/init.d/ssh start && /hadoop/sbin/start-dfs.sh && /bin/bash
 
